@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+    ],
+
+    "declaration": true,
+
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+  }
+}
