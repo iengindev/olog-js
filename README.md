@@ -1,14 +1,4 @@
 <div align="center">
-
-```
- ██████╗ ██╗      ██████╗  ██████╗
-██╔═══██╗██║     ██╔═══██╗██╔════╝
-██║   ██║██║     ██║   ██║██║  ███╗
-██║   ██║██║     ██║   ██║██║   ██║
-╚██████╔╝███████╗╚██████╔╝╚██████╔╝
- ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝
-```
-
 **Modular, type-safe logger for every JavaScript runtime.**
 
 Node.js · Bun · Deno · Browser · Electron — NestJS · Express · Vue · and anything else
