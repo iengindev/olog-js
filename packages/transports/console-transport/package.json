@@ -35,7 +35,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.30.1",
   "dependencies": {
-    "@olog-js/banner": "workspace:*"
+    "@olog-js/banner": "workspace:^"
   },
   "peerDependencies": {
     "@olog-js/core": "workspace:^"

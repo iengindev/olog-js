@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@olog-js/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:packages/core
       '@types/node':
         specifier: ^26.6.6
@@ -21,19 +21,6 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
-  apps/test:
-    dependencies:
-      '@olog-js/banner':
-        specifier: workspace:*
-        version: link:../../packages/banner
-      '@olog-js/console-transport':
-        specifier: workspace:*
-        version: link:../../packages/transports/console-transport
-    devDependencies:
-      '@types/node':
-        specifier: ^26.6.6
-        version: 26.6.6
-
   packages/banner: {}
 
   packages/core: {}
@@ -41,7 +28,7 @@ importers:
   packages/transports/console-transport:
     dependencies:
       '@olog-js/banner':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../../banner
     devDependencies:
       '@olog-js/core':
