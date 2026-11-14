@@ -57,6 +57,7 @@ log.child('Db').info('Connected', { host: '127.0.0.1', port: 5432 })
 pnpm add @olog-js/core @olog-js/console-transport
 # optional
 pnpm add @olog-js/file-transport
+```
 
 <details>
 <summary>npm / yarn / bun</summary>
