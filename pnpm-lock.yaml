@@ -21,6 +21,19 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
+  apps/playground:
+    dependencies:
+      '@olog-js/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@olog-js/file-transport':
+        specifier: workspace:*
+        version: link:../../packages/transports/file-transport
+    devDependencies:
+      '@types/node':
+        specifier: ^26.6.6
+        version: 26.6.6
+
   packages/banner: {}
 
   packages/core: {}
@@ -34,6 +47,15 @@ importers:
       '@olog-js/core':
         specifier: workspace:*
         version: link:../../core
+
+  packages/transports/file-transport:
+    devDependencies:
+      '@olog-js/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@types/node':
+        specifier: ^26.6.6
+        version: 26.6.6
 
 packages:
 
