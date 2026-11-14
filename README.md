@@ -1,5 +1,5 @@
 <div align="center">
-**Modular, type-safe logger for every JavaScript runtime.**
+<b>Modular, type-safe logger for every JavaScript runtime.</b>
 
 Node.js · Bun · Deno · Browser · Electron — NestJS · Express · Vue · and anything else
 
@@ -7,7 +7,6 @@ Node.js · Bun · Deno · Browser · Electron — NestJS · Express · Vue · an
 [![license](https://img.shields.io/badge/license-MIT-8a5cf6)](./LICENSE)
 [![types](https://img.shields.io/badge/types-TypeScript-3178c6)](#)
 [![deps](https://img.shields.io/badge/core%20dependencies-0-17c964)](#)
-
 </div>
 
 ---
@@ -570,7 +569,7 @@ In the renderer, `ConsoleTransport` uses DevTools output automatically.
 ```ts
 const isProd = process.env.NODE_ENV === 'production'
 
-export const log = createLogger({
+export const log = CreateLogger({
   level: (process.env.LOG_LEVEL as LevelName) ?? (isProd ? 'info' : 'debug'),
   context: 'App',
   meta: {
