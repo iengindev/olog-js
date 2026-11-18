@@ -1,0 +1,38 @@
+{
+  "name": "olog-js",
+  "version": "0.1.0",
+  "description": "Zero-dependency, type-safe logger core for every JavaScript runtime",
+  "keywords": [
+    "log",
+    "logger",
+    "logging",
+    "typescript"
+  ],
+  "author": {
+    "name": "iengindev",
+    "email": "weendibol21300@gmail.com",
+    "url": "https://github.com/iengindev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iengindev/olog-js.git"
+  },
+  "homepage": "https://github.com/iengindev/olog-js#readme",
+  "bugs": "https://github.com/iengindev/olog-js/issues",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "lint": "eslint ."
+  },
+  "packageManager": "pnpm@12.21.0",
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^6.0.1",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.15.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.73.0"
+  }
+}
