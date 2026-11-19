@@ -40,6 +40,9 @@ export default defineConfig(
       'apps/**/*.ts',
       'packages/**/*.ts',
     ],
+    ignores: [
+      '**/*.config.ts',
+    ],
     extends: [
       tseslint.configs.strictTypeChecked,
     ],

@@ -1,0 +1,16 @@
+{
+  "name": "@olog-js/testing",
+  "version": "0.1.0",
+  "description": "Testing package",
+  "main": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "author": "iengindev",
+  "license": "MIT",
+  "dependencies": {
+    "@olog-js/core": "workspace:*"
+  }
+}
