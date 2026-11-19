@@ -20,13 +20,12 @@
   "homepage": "https://github.com/iengindev/olog-js#readme",
   "bugs": "https://github.com/iengindev/olog-js/issues",
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -40,6 +39,9 @@
         "default": "./dist/index.cjs"
       }
     }
+  },
+  "engines": {
+    "node": ">=20"
   },
   "files": [
     "dist"
