@@ -1,11 +1,11 @@
 import { SerializeError } from './modules/error'
 import { AssertLevel, IsLevelEnabled, Levels } from './modules/level'
 import { CreateRedactor } from './modules/redact'
+import { ResolveTransports } from './modules/transport'
 
 import type { LevelName, LevelOrSilent } from './types/level'
-import type { ChildOptions, ErrorHandler, LogInput, LogRecord, LoggerOptions, Meta, Shared } from './types/logger'
+import type { ChildOptions, ErrorHandler, LogInput, LogRecord, LoggerOptions, Meta, Shared, Transport } from './types/logger'
 
-import { ConsoleTransport } from './utils/console'
 import { PrintBanner } from './utils/banner'
 
 const DefaultOnError: ErrorHandler = (error, source) => {
@@ -25,31 +25,38 @@ export class Logger {
     this.$context = options.context
     this.$meta = { ...options.meta }
 
+    const Resolved = ResolveTransports(options)
     const Redactor = options.redact === false ? [] : [CreateRedactor(options.redact)]
 
     this.$shared = {
-      transports: [...(options.transports ?? [new ConsoleTransport()])],
+      transports: Resolved.transports,
       pipeline: [...(options.processors ?? []), ...Redactor],
       onError: options.onError ?? DefaultOnError,
       pending: new Set(),
       closed: false,
     }
 
-    const BannerOptions = options.banner ?? true
+    this.$printBanner(options.banner ?? true, Resolved.console)
+  }
 
-    if (BannerOptions !== false) {
-      const Banner = BannerOptions === true ? {} : BannerOptions
-
-      PrintBanner({
-        ...Banner,
-        fields: {
-          level: this.$level,
-          context: this.$context,
-          transports: this.$shared.transports.map((target) => target.name).join(', '),
-          ...Banner.fields,
-        },
-      })
+  private $printBanner(option: NonNullable<LoggerOptions['banner']>, target: Transport | undefined) {
+    if (option === false || this.$level === 'silent' || target?.write === undefined) {
+      return
     }
+
+    const Write = target.write.bind(target)
+    const Banner = option === true ? {} : option
+
+    PrintBanner({
+      ...Banner,
+      print: Write,
+      fields: {
+        level: this.$level,
+        context: this.$context,
+        transports: this.$shared.transports.map((transport) => transport.name).join(', '),
+        ...Banner.fields,
+      },
+    })
   }
 
   get level(): LevelOrSilent {
@@ -71,7 +78,7 @@ export class Logger {
   child(options: ChildOptions = {}): Logger {
     const Child = new Logger({
       level: options.level ?? this.$level,
-      transports: [],
+      console: false,
       redact: false,
       banner: false,
     })
@@ -252,6 +259,7 @@ export { SafeStringify, ToSerializable } from './modules/serialize'
 export { CreateRedactor, DefaultRedactKeys, DefaultRedactPatterns } from './modules/redact'
 export { Filter, Enrich } from './modules/filter'
 export { Json, Pretty } from './modules/format'
+export { IsConsoleTransport, ResolveTransports } from './modules/transport'
 
 export { ConsoleTransport } from './utils/console'
 

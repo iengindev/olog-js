@@ -1,19 +1,9 @@
-import { Logger, ConsoleTransport, Json, Pretty, Filter, Enrich } from '@olog-js/core'
+import { Logger, Filter, Enrich } from '@olog-js/core'
 
 const UseLogger = new Logger({
   level: 'debug',
   context: 'app',
   transports: [
-    new ConsoleTransport({
-      format: Pretty({
-        colors: true,
-      }),
-    }),
-    new ConsoleTransport({
-      name: 'json',
-      level: 'warn',
-      format: Json(),
-    }),
   ],
   processors: [
     Filter((r) => r.context !== 'healthcheck'),
@@ -39,7 +29,7 @@ const DB = UseLogger.child({
 
 DB.info('Connect to DB ', {
   host: 'postgre://127.0.0.1:5432/test',
-  password: '123456789',
+  card: '123456789',
 })
 
 try {

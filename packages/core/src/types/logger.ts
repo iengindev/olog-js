@@ -1,6 +1,7 @@
 import type { LevelName, LevelOrSilent } from './level'
 
 import type { PrintBannerOptions } from '../utils/banner'
+import type { ConsoleTransportOptions } from '../utils/console'
 
 export type Meta = Record<string, unknown>
 
@@ -28,8 +29,10 @@ export type Formatter = (record: LogRecord) => string
 
 export interface Transport {
   readonly name: string
+  readonly kind?: string
   level?: LevelOrSilent
   log(record: LogRecord): void | Promise<void>
+  write?(text: string): void
   flush?(): Promise<void>
   close?(): Promise<void>
 }
@@ -44,10 +47,11 @@ export interface RedactOptions {
 }
 
 export interface LoggerOptions {
-  banner?: PrintBannerOptions | boolean
+  banner?: Omit<PrintBannerOptions, 'print'> | boolean
   level?: LevelOrSilent
   context?: string
   meta?: Meta
+  console?: ConsoleTransportOptions | false
   transports?: Transport[]
   processors?: Processor[]
   redact?: RedactOptions | false

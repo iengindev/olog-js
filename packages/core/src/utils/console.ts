@@ -21,7 +21,11 @@ const Methods: Record<LevelName, 'error' | 'warn' | 'info' | 'log' | 'debug'> = 
 }
 
 export class ConsoleTransport implements Transport {
+  private readonly console: Console = console
+
   readonly name: string
+  readonly kind = 'console'
+
   level?: LevelOrSilent
   readonly format: Formatter
 
@@ -35,6 +39,14 @@ export class ConsoleTransport implements Transport {
   }
 
   log(record: LogRecord): void | Promise<void> {
-    console[Methods[record.level]](this.format(record))
+    this.console[Methods[record.level]](this.format(record))
+  }
+
+  write(text: string): void {
+    if (this.level === 'silent') {
+      return
+    }
+
+    this.console.log(text)
   }
 }
