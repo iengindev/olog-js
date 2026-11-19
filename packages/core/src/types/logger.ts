@@ -1,5 +1,7 @@
 import type { LevelName, LevelOrSilent } from './level'
 
+import type { PrintBannerOptions } from '../utils/banner'
+
 export type Meta = Record<string, unknown>
 
 export interface SerializedError {
@@ -42,6 +44,7 @@ export interface RedactOptions {
 }
 
 export interface LoggerOptions {
+  banner?: PrintBannerOptions | boolean
   level?: LevelOrSilent
   context?: string
   meta?: Meta

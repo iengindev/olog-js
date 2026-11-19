@@ -2,10 +2,11 @@ import { SerializeError } from './modules/error'
 import { AssertLevel, IsLevelEnabled, Levels } from './modules/level'
 import { CreateRedactor } from './modules/redact'
 
-import { ConsoleTransport } from './utils/console'
-
 import type { LevelName, LevelOrSilent } from './types/level'
 import type { ChildOptions, ErrorHandler, LogInput, LogRecord, LoggerOptions, Meta, Shared } from './types/logger'
+
+import { ConsoleTransport } from './utils/console'
+import { PrintBanner } from './utils/banner'
 
 const DefaultOnError: ErrorHandler = (error, source) => {
   try {
@@ -33,6 +34,22 @@ export class Logger {
       pending: new Set(),
       closed: false,
     }
+
+    const BannerOptions = options.banner ?? true
+
+    if (BannerOptions !== false) {
+      const Banner = BannerOptions === true ? {} : BannerOptions
+
+      PrintBanner({
+        ...Banner,
+        fields: {
+          level: this.$level,
+          context: this.$context,
+          transports: this.$shared.transports.map((target) => target.name).join(', '),
+          ...Banner.fields,
+        },
+      })
+    }
   }
 
   get level(): LevelOrSilent {
@@ -56,6 +73,7 @@ export class Logger {
       level: options.level ?? this.$level,
       transports: [],
       redact: false,
+      banner: false,
     })
 
     Child.$context = options.context ?? this.$context
@@ -238,6 +256,12 @@ export { Json, Pretty } from './modules/format'
 export { ConsoleTransport } from './utils/console'
 
 export type { ConsoleTransportOptions } from './utils/console'
+
+export { PrintBanner, RenderBanner } from './utils/banner'
+export { DetectRuntime, SupportsColor } from './utils/runtime'
+
+export type { BannerOptions, PrintBannerOptions } from './utils/banner'
+export type { RuntimeInfo } from './utils/runtime'
 
 export type * from './types/level'
 export type * from './types/logger'
