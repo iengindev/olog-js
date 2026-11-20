@@ -1,12 +1,12 @@
 <div align="center">
 
-# @olog-js/nest
+# @olog-js/nestjs
 
 **NestJS integration for [olog-js](https://github.com/iengindev/olog-js).**
 
 Module · LoggerService · per-class loggers · request context · HTTP logging
 
-[![npm](https://img.shields.io/npm/v/@olog-js/nest?color=00afff)](https://www.npmjs.com/package/@olog-js/nest)
+[![npm](https://img.shields.io/npm/v/@olog-js/nestjs?color=00afff)](https://www.npmjs.com/package/@olog-js/nestjs)
 [![license](https://img.shields.io/badge/license-MIT-8a5cf6)](../../LICENSE)
 
 NestJS 10 · 11 — Express · Fastify
@@ -24,7 +24,7 @@ NestJS 10 · 11 — Express · Fastify
 ## Install
 
 ```bash
-npm install @olog-js/core @olog-js/nest
+npm install @olog-js/core @olog-js/nestjs
 ```
 
 `@olog-js/core`, `@nestjs/common` and `@nestjs/core` are peer dependencies.
@@ -35,7 +35,7 @@ npm install @olog-js/core @olog-js/nest
 
 ```ts
 import { Module } from '@nestjs/common'
-import { OlogModule } from '@olog-js/nest'
+import { OlogModule } from '@olog-js/nestjs'
 
 @Module({
   imports: [
@@ -49,7 +49,7 @@ export class AppModule {}
 
 ```ts
 import { NestFactory } from '@nestjs/core'
-import { OlogService } from '@olog-js/nest'
+import { OlogService } from '@olog-js/nestjs'
 import { AppModule } from './app.module'
 
 const bootstrap = async () => {
@@ -70,7 +70,7 @@ void bootstrap()
 
 ```ts
 import { Injectable } from '@nestjs/common'
-import { OlogLogger } from '@olog-js/nest'
+import { OlogLogger } from '@olog-js/nestjs'
 
 @Injectable()
 export class UsersService {
@@ -146,7 +146,7 @@ Implements Nest's `LoggerService`. Pass it to `app.useLogger()`. It maps Nest's 
 ### The root logger
 
 ```ts
-import { InjectRootLogger } from '@olog-js/nest'
+import { InjectRootLogger } from '@olog-js/nestjs'
 import type { Logger } from '@olog-js/core'
 
 constructor(@InjectRootLogger() private readonly logger: Logger) {}
@@ -159,7 +159,7 @@ Every HTTP request runs in its own context. Anything logged while handling it ge
 Add your own fields with `SetRequestMeta`, for example after authentication:
 
 ```ts
-import { SetRequestMeta } from '@olog-js/nest'
+import { SetRequestMeta } from '@olog-js/nestjs'
 
 SetRequestMeta({ userId: user.id, tenant: user.tenantId })
 ```

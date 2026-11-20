@@ -1,5 +1,5 @@
 {
-  "name": "@olog-js/nest",
+  "name": "@olog-js/nestjs",
   "version": "0.1.0",
   "description": "NestJS integration for olog-js: module, LoggerService, request context and HTTP logging",
   "keywords": [
