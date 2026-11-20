@@ -39,6 +39,7 @@ export default defineConfig(
     files: [
       'apps/**/*.ts',
       'packages/**/*.ts',
+      'packages/transports/**/*.ts',
     ],
     ignores: [
       '**/*.config.ts',
