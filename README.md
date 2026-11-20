@@ -69,7 +69,7 @@ apps/
 packages/
   core/           @olog-js/core
   nest/           @olog-js/nest (planned)
-  transports/     @olog-js/transports/file-transport
+  transports/     @olog-js/transports/transport-file
                   @olog-js/transports/* (planned)
 ```
 

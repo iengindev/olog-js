@@ -89,6 +89,8 @@ export default defineConfig(
       'max-depth': ['warn', 3],
       'complexity': ['warn', 10],
       'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
+      '@typescript-eslint/no-unsafe-class-instance-assignment': 'off',
+      '@typescript-eslint/no-extraneous-class': 'off',
     },
   },
 )
