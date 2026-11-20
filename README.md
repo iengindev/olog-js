@@ -30,7 +30,8 @@ Node.js · Bun · Deno · Browser · Electron
 | Package | Description | Status |
 |---|---|---|
 | [`@olog-js/core`](./packages/core) | Logger, pipeline, formatters, console transport, banner | ✅ |
-| `@olog-js/transport-*` | File (with rotation), stream and HTTP transports | 🚧 planned |
+| [`@olog-js/transport-file`](./packages/transports/transport-file) | File transport with size and time rotation | ✅ |
+| `@olog-js/transport-*` | stream, HTTP transports, more | 🚧 planned |
 | `@olog-js/nest` | - | 🚧 planned |
 
 ## Quick start
@@ -68,12 +69,13 @@ apps/
 packages/
   core/           @olog-js/core
   nest/           @olog-js/nest (planned)
-  transports/     @olog-js/transports (planned)
+  transports/     @olog-js/transports/file-transport
+                  @olog-js/transports/* (planned)
 ```
 
 ## Roadmap
 
-- [ ] `@olog-js/transport-*`: file with rotation, stream with backpressure, HTTP with batching and retries
+- [ ] `@olog-js/transport-*`: stream with backpressure, HTTP with batching and retries
 - [ ] `@olog-js/nest`
 - [ ] Custom levels
 - [ ] Lazy messages for expensive debug output

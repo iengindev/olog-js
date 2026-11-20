@@ -202,8 +202,17 @@ importers:
       '@olog-js/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@olog-js/transport-file':
+        specifier: workspace:*
+        version: link:../../packages/transports/transport-file
 
   packages/core: {}
+
+  packages/transports/transport-file:
+    devDependencies:
+      '@olog-js/core':
+        specifier: workspace:*
+        version: link:../../core
 
 packages:
 

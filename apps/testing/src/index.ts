@@ -1,9 +1,23 @@
-import { Logger, Filter, Enrich } from '@olog-js/core'
+import { Logger, Filter, Enrich, Pretty } from '@olog-js/core'
+import { FileTransport } from '@olog-js/transport-file'
 
 const UseLogger = new Logger({
   level: 'debug',
   context: 'app',
   transports: [
+    new FileTransport({
+      path: 'logs/app.log',
+      maxSize: '10MB',
+      interval: 'daily',
+      maxFiles: 14,
+      compress: true,
+    }),
+    new FileTransport({
+      name: 'errors',
+      path: 'logs/error.log',
+      level: 'error',
+      format: Pretty({ colors: false }),
+    }),
   ],
   processors: [
     Filter((r) => r.context !== 'healthcheck'),

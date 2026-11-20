@@ -11,6 +11,7 @@
   "author": "iengindev",
   "license": "MIT",
   "dependencies": {
-    "@olog-js/core": "workspace:*"
+    "@olog-js/core": "workspace:*",
+    "@olog-js/transport-file": "workspace:*"
   }
 }
